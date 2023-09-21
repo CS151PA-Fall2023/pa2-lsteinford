@@ -112,14 +112,7 @@ void indexByLastName(Student * ptrs[], int size)
 {
     sort(ptrs, ptrs + size, compareLast);
     cout << "Sorted by Last Name\n";
-    cout << left << setw(4) <<"ID" << setw(10) << "Last Name" << setw(12) << "First Name" << setw(12) << "SSN" << "Grade\n";
-    for (int i = 0; i < size; i++){
-        cout << right << setw(2) << ptrs[i]->id << "  " 
-             << left << setw(10) << ptrs[i]->lastName 
-             << left << setw(12) << ptrs[i]->firstName 
-             << left << setw(12) << ptrs[i]->ssn 
-             << ptrs[i]->letterGrade << endl;
-    }
+    displayAllInfo(ptrs, size);
 }
 
 /**
@@ -145,14 +138,7 @@ void indexBySSN(Student * ptrs[], int size)
 {
     sort(ptrs, ptrs + size, compareSSN);
     cout << "Sorted by SSN\n";
-    cout << left << setw(4) <<"ID" << setw(10) << "Last Name" << setw(12) << "First Name" << setw(12) << "SSN" << "Grade\n";
-    for (int i = 0; i < size; i++){
-        cout << right << setw(2) << ptrs[i]->id << "  " 
-             << left << setw(10) << ptrs[i]->lastName 
-             << left << setw(12) << ptrs[i]->firstName 
-             << left << setw(12) << ptrs[i]->ssn 
-             << ptrs[i]->letterGrade << endl;
-    }
+    displayAllInfo(ptrs, size);
 }
 
 /**
@@ -171,17 +157,7 @@ void searchByLastName(Student * ptrs[], int size)
         getline(cin, userInput);
         for(int i = 0; i < size; i++){
             if (userInput == ptrs[i]->lastName){
-                cout << "\nStudent Info\n" << "---------------\n";
-                cout << "Name: " << right << setw(10) << ptrs[i]->firstName << " " << ptrs[i]->lastName << endl;
-                cout << "ID: " << right << setw(18) << ptrs[i]->id << endl;
-                cout << "SSN: " << right << setw(17) << ptrs[i]->ssn << endl;
-                cout << "Test 1: " << right << setw(14) << ptrs[i]->test[0] << endl;
-                cout << "Test 2: " << right << setw(14) << ptrs[i]->test[1] << endl;
-                cout << "Test 3: " << right << setw(14) << ptrs[i]->test[2] << endl;
-                cout << "Test 4: " << right << setw(14) << ptrs[i]->test[3] << endl;
-                cout << "Final: " << right << setw(15) << ptrs[i]->final << endl;
-                cout << "Final Letter Grade: " << ptrs[i]->letterGrade << endl;
-
+                displayStudentInfo(ptrs, i);
                 valid = true;
             } 
         }
@@ -207,17 +183,7 @@ void searchBySSN(Student * ptrs[], int size)
         getline(cin, userInput);
         for(int i = 0; i < size; i++){
             if (userInput == ptrs[i]->ssn){
-                cout << "\nStudent Info\n" << "---------------\n";
-                cout << "Name: " << right << setw(10) << ptrs[i]->firstName << " " << ptrs[i]->lastName << endl;
-                cout << "ID: " << right << setw(18) << ptrs[i]->id << endl;
-                cout << "SSN: " << right << setw(17) << ptrs[i]->ssn << endl;
-                cout << "Test 1: " << right << setw(14) << ptrs[i]->test[0] << endl;
-                cout << "Test 2: " << right << setw(14) << ptrs[i]->test[1] << endl;
-                cout << "Test 3: " << right << setw(14) << ptrs[i]->test[2] << endl;
-                cout << "Test 4: " << right << setw(14) << ptrs[i]->test[3] << endl;
-                cout << "Final: " << right << setw(15) << ptrs[i]->final << endl;
-                cout << "Final Letter Grade: " << ptrs[i]->letterGrade << endl;
-
+                displayStudentInfo(ptrs, i);
                 valid = true;
             } 
         }
@@ -225,4 +191,44 @@ void searchBySSN(Student * ptrs[], int size)
             cout << "SSN not found. Please enter valid SSN. ";
         }
     }
+}
+
+/**
+ * @brief Displays all students info with ssn, id, and letterGrade
+ * 
+ * @param ptrs 
+ * @param size 
+ */
+void displayAllInfo(Student * ptrs[], int size)
+{
+
+    cout << left << setw(4) <<"ID" << setw(10) << "Last Name" << setw(12) << "First Name" << setw(12) << "SSN" << "Grade\n";
+    for (int i = 0; i < size; i++){
+        cout << right << setw(2) << ptrs[i]->id << "  " 
+             << left << setw(10) << ptrs[i]->lastName 
+             << left << setw(12) << ptrs[i]->firstName 
+             << left << setw(12) << ptrs[i]->ssn 
+             << ptrs[i]->letterGrade << endl;
+    }
+
+}
+
+/**
+ * @brief Displays all information available for single student
+ * 
+ * @param ptrs 
+ * @param i 
+ */
+void displayStudentInfo(Student * ptrs[], int i)
+{
+    cout << "\nStudent Info\n" << "---------------\n";
+    cout << "Name: " << right << setw(10) << ptrs[i]->firstName << " " << ptrs[i]->lastName << endl;
+    cout << "ID: " << right << setw(18) << ptrs[i]->id << endl;
+    cout << "SSN: " << right << setw(17) << ptrs[i]->ssn << endl;
+    cout << "Test 1: " << right << setw(14) << ptrs[i]->test[0] << endl;
+    cout << "Test 2: " << right << setw(14) << ptrs[i]->test[1] << endl;
+    cout << "Test 3: " << right << setw(14) << ptrs[i]->test[2] << endl;
+    cout << "Test 4: " << right << setw(14) << ptrs[i]->test[3] << endl;
+    cout << "Final: " << right << setw(15) << ptrs[i]->final << endl;
+    cout << "Final Letter Grade: " << ptrs[i]->letterGrade << endl;
 }

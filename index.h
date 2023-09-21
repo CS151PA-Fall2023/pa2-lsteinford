@@ -39,6 +39,8 @@ bool compareSSN(Student* a, Student* b);
 void indexBySSN(Student * ptrs[], int size);
 void searchByLastName(Student * ptrs[], int size);
 void searchBySSN(Student * ptrs[], int size);
+void displayAllInfo(Student * ptrs[], int size);
+void displayStudentInfo(Student * ptrs[], int i);
 
 
 #endif
