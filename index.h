@@ -14,8 +14,8 @@
 #include <iostream>
 #include <iomanip>
 #include <fstream>
-#include <string>
 #include <algorithm>
+
 using namespace std;
 
 struct Student
