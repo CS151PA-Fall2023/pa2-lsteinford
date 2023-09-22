@@ -15,6 +15,7 @@
 #include <iomanip>
 #include <fstream>
 #include <algorithm>
+#include <cstring>
 
 using namespace std;
 
@@ -35,6 +36,8 @@ void homeScreen();
 void point(Student * ptrs[], Student array[], int size);
 bool compareLast(Student* a, Student* b);
 void indexByLastName(Student * ptrs[], int size);
+bool compareFirst(Student* a, Student* b);
+void indexByFirstName(Student * ptrs[], int size);
 bool compareSSN(Student* a, Student* b);
 void indexBySSN(Student * ptrs[], int size);
 void searchByLastName(Student * ptrs[], int size);

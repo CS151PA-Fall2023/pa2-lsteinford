@@ -68,10 +68,11 @@ void readFile(ifstream &file, Student a[])
 void homeScreen()
 {
     cout << "1. Print data in ascending order by last name\n";
-    cout << "2. Print data in ascending order by SSN\n";
-    cout << "3. Search by last name\n";
-    cout << "4. Search by SSN\n";
-    cout << "5. Exit\n" << endl;
+    cout << "2. Print data in ascending order by first name\n";
+    cout << "3. Print data in ascending order by SSN\n";
+    cout << "4. Search by last name\n";
+    cout << "5. Search by SSN\n";
+    cout << "6. Exit\n" << endl;
 }
 
 /**
@@ -98,21 +99,64 @@ void point(Student * ptrs[], Student array[], int size)
  * @return true 
  * @return false 
  */
-bool compareLast(Student* a, Student* b){
-    return a->lastName < b->lastName;
+bool compareLast(Student* a, Student* b)
+{
+    
+    // return a->lastName > b->lastName;
+
+    return strcasecmp(a->lastName.c_str(), b->lastName.c_str()) > 0;
 }
 
 /**
- * @brief Sorts the lastName pointer array and displays it
+ * @brief Sorts the lastName pointer array
  * 
  * @param ptrs 
  * @param size 
  */
 void indexByLastName(Student * ptrs[], int size)
 {
-    sort(ptrs, ptrs + size, compareLast);
-    cout << "Sorted by Last Name\n";
-    displayAllInfo(ptrs, size);
+    for(int i = 0; i < size - 1; i++){
+        for(int j =0; j < size - i - 1; j++){
+            if(compareLast(ptrs[j], ptrs[j+1])){
+                Student* temp = ptrs[j];
+                ptrs[j] = ptrs[j+1];
+                ptrs[j+1] = temp;
+            }
+        }
+    }
+}
+
+/**
+ * @brief Compares the first name strings
+ * 
+ * @param a 
+ * @param b 
+ * @return true 
+ * @return false 
+ */
+bool compareFirst(Student* a, Student* b)
+{
+    
+    return a->firstName > b->firstName;
+}
+
+/**
+ * @brief Sorts the firstName pointer array
+ * 
+ * @param ptrs 
+ * @param size 
+ */
+void indexByFirstName(Student * ptrs[], int size)
+{
+    for(int i = 0; i < size - 1; i++){
+        for(int j =0; j < size - i - 1; j++){
+            if(compareFirst(ptrs[j], ptrs[j+1])){
+                Student* temp = ptrs[j];
+                ptrs[j] = ptrs[j+1];
+                ptrs[j+1] = temp;
+            }
+        }
+    }
 }
 
 /**
@@ -125,20 +169,27 @@ void indexByLastName(Student * ptrs[], int size)
  */
 bool compareSSN(Student* a, Student* b)
 {
-    return a->ssn < b->ssn;
+    return a->ssn > b->ssn;
 }
 
 /**
- * @brief Sorts the SSN pointer array and displays it
+ * @brief Sorts the SSN pointer array
  * 
  * @param ptrs 
  * @param size 
  */
 void indexBySSN(Student * ptrs[], int size)
 {
-    sort(ptrs, ptrs + size, compareSSN);
-    cout << "Sorted by SSN\n";
-    displayAllInfo(ptrs, size);
+    for(int i = 0; i < size - 1; i++){
+        for(int j =0; j < size - i - 1; j++){
+            if(compareSSN(ptrs[j], ptrs[j+1])){
+                Student* temp = ptrs[j];
+                ptrs[j] = ptrs[j+1];
+                ptrs[j+1] = temp;
+            }
+        }
+    }
+    
 }
 
 /**
