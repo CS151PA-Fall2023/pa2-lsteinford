@@ -92,22 +92,6 @@ void point(Student * ptrs[], Student array[], int size)
 }
 
 /**
- * @brief Compares the last name strings
- * 
- * @param a 
- * @param b 
- * @return true 
- * @return false 
- */
-bool compareLast(Student* a, Student* b)
-{
-    
-    // return a->lastName > b->lastName;
-
-    return strcasecmp(a->lastName.c_str(), b->lastName.c_str()) > 0;
-}
-
-/**
  * @brief Sorts the lastName pointer array
  * 
  * @param ptrs 
@@ -117,27 +101,13 @@ void indexByLastName(Student * ptrs[], int size)
 {
     for(int i = 0; i < size - 1; i++){
         for(int j =0; j < size - i - 1; j++){
-            if(compareLast(ptrs[j], ptrs[j+1])){
+            if(strcasecmp(ptrs[j]->lastName.c_str(), ptrs[j+1]->lastName.c_str()) > 0){
                 Student* temp = ptrs[j];
                 ptrs[j] = ptrs[j+1];
                 ptrs[j+1] = temp;
             }
         }
     }
-}
-
-/**
- * @brief Compares the first name strings
- * 
- * @param a 
- * @param b 
- * @return true 
- * @return false 
- */
-bool compareFirst(Student* a, Student* b)
-{
-    
-    return a->firstName > b->firstName;
 }
 
 /**
@@ -150,26 +120,13 @@ void indexByFirstName(Student * ptrs[], int size)
 {
     for(int i = 0; i < size - 1; i++){
         for(int j =0; j < size - i - 1; j++){
-            if(compareFirst(ptrs[j], ptrs[j+1])){
+            if(strcasecmp(ptrs[j]->firstName.c_str(), ptrs[j+1]->firstName.c_str()) > 0){
                 Student* temp = ptrs[j];
                 ptrs[j] = ptrs[j+1];
                 ptrs[j+1] = temp;
             }
         }
     }
-}
-
-/**
- * @brief Compares the SSN strings
- * 
- * @param a 
- * @param b 
- * @return true 
- * @return false 
- */
-bool compareSSN(Student* a, Student* b)
-{
-    return a->ssn > b->ssn;
 }
 
 /**
@@ -182,7 +139,7 @@ void indexBySSN(Student * ptrs[], int size)
 {
     for(int i = 0; i < size - 1; i++){
         for(int j =0; j < size - i - 1; j++){
-            if(compareSSN(ptrs[j], ptrs[j+1])){
+            if(strcasecmp(ptrs[j]->ssn.c_str(), ptrs[j+1]->ssn.c_str()) > 0){
                 Student* temp = ptrs[j];
                 ptrs[j] = ptrs[j+1];
                 ptrs[j+1] = temp;
