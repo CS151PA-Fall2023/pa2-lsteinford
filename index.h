@@ -34,7 +34,6 @@ void openInputFile(ifstream &file, string fileName);
 void readFile(ifstream &file, Student a[]);
 void homeScreen();
 void point(Student * ptrs[], Student array[], int size);
-bool compareString(const char* a, const char* b);
 void indexByLastName(Student * ptrs[], int size);
 void indexByFirstName(Student * ptrs[], int size);
 void indexBySSN(Student * ptrs[], int size);
